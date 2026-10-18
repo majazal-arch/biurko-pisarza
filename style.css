@@ -1,0 +1,1123 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fafafa;
+    color: #171717;
+}
+
+.app {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* MENU BOCZNE */
+
+.sidebar {
+    width: 250px;
+    background: #ffffff;
+    border-right: 1px solid #e5e5e5;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h2 {
+    font-size: 20px;
+    margin-bottom: 50px;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-btn {
+    padding: 14px;
+    background: transparent;
+    border: none;
+    text-align: left;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 8px;
+    color: #555;
+}
+
+.nav-btn:hover {
+    background: #f1f1f1;
+}
+
+.nav-btn.active {
+    background: #171717;
+    color: white;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    font-size: 12px;
+    color: #999;
+}
+
+/* GŁÓWNA ZAWARTOŚĆ */
+
+.content {
+    flex: 1;
+    min-width: 0;
+    padding: 60px;
+    max-width: 1400px;
+}
+
+.eyebrow {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #888;
+}
+
+h1 {
+    font-size: 36px;
+    margin: 10px 0;
+}
+
+.subtitle {
+    color: #777;
+    margin-bottom: 40px;
+}
+
+/* STATYSTYKI */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.stat-card p {
+    color: #777;
+    font-size: 14px;
+}
+
+.stat-card h2 {
+    font-size: 32px;
+    margin-bottom: 0;
+}
+
+/* PANELE */
+
+.panel {
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 30px;
+    margin-top: 25px;
+}
+
+.empty-state {
+    color: #999;
+    padding: 20px 0;
+}
+
+.primary-btn {
+    background: #171717;
+    color: white;
+    border: none;
+    padding: 14px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.primary-btn:hover {
+    background: #444;
+}
+
+/* WIDOKI */
+
+.view {
+    display: none;
+}
+
+.view.active {
+    display: block;
+}
+
+/* TELEFONY */
+
+@media (max-width: 768px) {
+    .app {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 20px;
+        border-right: none;
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    .sidebar h2 {
+        margin-bottom: 20px;
+    }
+
+    nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .sidebar-footer {
+        display: none;
+    }
+
+    .content {
+        padding: 25px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+}
+
+
+/* FORMULARZ UTWORU */
+
+.hidden {
+    display: none !important;
+}
+
+form label {
+    display: block;
+    margin: 18px 0 8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    background: white;
+}
+
+form button {
+    margin-top: 22px;
+}
+
+/* LISTA PROJEKTÓW */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.project-card {
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 25px;
+    min-width: 0;
+}
+
+.project-card h3 {
+    margin: 10px 0;
+    overflow-wrap: anywhere;
+}
+
+.project-type {
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 9px;
+    background: #eee;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #171717;
+    transition: width 0.3s;
+}
+
+.project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.small-btn {
+    border: 1px solid #ddd;
+    background: white;
+    padding: 9px 12px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.small-btn:hover {
+    background: #f1f1f1;
+}
+
+.danger-btn {
+    color: #b42318;
+}
+
+.empty-projects {
+    color: #888;
+    padding: 30px;
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+}
+
+
+/* MODUŁ REDAKCJI */
+
+#editingProject {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    font-size: 15px;
+}
+
+.chapter-card {
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 25px;
+    margin-top: 20px;
+}
+
+.chapter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.chapter-header h3 {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.chapter-status {
+    padding: 9px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+.chapter-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.edit-session-form {
+    margin-top: 20px;
+    padding: 20px;
+    background: #fafafa;
+    border-radius: 10px;
+}
+
+.edit-session-form textarea {
+    width: 100%;
+    min-height: 90px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font: inherit;
+    resize: vertical;
+}
+
+.edit-history {
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.history-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    overflow-wrap: anywhere;
+}
+
+.history-item p {
+    margin: 6px 0;
+}
+
+.history-date {
+    color: #888;
+    font-size: 12px;
+}
+
+@media (max-width: 768px) {
+    .chapter-card {
+        padding: 18px;
+    }
+
+    .chapter-header {
+        align-items: stretch;
+        flex-direction: column;
+    }
+}
+
+
+/* BANER STRONY GŁÓWNEJ */
+
+.welcome-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    background: #f0eee9;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    min-height: 230px;
+}
+
+.welcome-text {
+    padding: 30px;
+    flex: 1;
+}
+
+.welcome-text h2 {
+    font-size: 28px;
+    line-height: 1.3;
+    margin: 12px 0;
+}
+
+.welcome-text p {
+    color: #666;
+}
+
+.welcome-image {
+    width: 43%;
+    height: 230px;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* DOPRACOWANIE INTERFEJSU */
+
+.stat-card,
+.panel,
+.project-card,
+.chapter-card {
+    transition: box-shadow 0.2s ease;
+}
+
+.stat-card:hover,
+.project-card:hover,
+.chapter-card:hover {
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid #476b60;
+    outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+    .welcome-banner {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .welcome-image {
+        width: 100%;
+        height: 180px;
+    }
+
+    .welcome-text {
+        padding: 22px;
+    }
+
+    .welcome-text h2 {
+        font-size: 23px;
+    }
+}
+
+
+/* OSTATNIO EDYTOWANE */
+
+.recent-section {
+    margin: 30px 0;
+    padding: 25px;
+    background: #f8f7f4;
+    border: 1px solid #e8e5df;
+    border-radius: 16px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-heading h2 {
+    font-size: 22px;
+    margin: 8px 0 0;
+}
+
+.recent-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    padding: 30px 20px;
+    text-align: center;
+    color: #888;
+    background: white;
+    border: 1px dashed #d8d5cf;
+    border-radius: 12px;
+}
+
+@media (max-width: 900px) {
+    .recent-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .recent-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .recent-section {
+        padding: 18px;
+    }
+}
+
+
+/* KARTY OSTATNICH UTWORÓW */
+
+.recent-card {
+    background: white;
+    border: 1px solid #e8e5df;
+    border-radius: 12px;
+    padding: 20px;
+    min-width: 0;
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.recent-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.recent-card h3 {
+    margin: 10px 0;
+    font-size: 19px;
+    overflow-wrap: anywhere;
+}
+
+.recent-card p {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 12px;
+}
+
+
+/* DRZEWKO PROJEKTÓW W PANELU BOCZNYM */
+
+.sidebar-projects {
+    margin-top: 35px;
+    padding: 20px 12px;
+    border-top: 1px solid #e8e5df;
+}
+
+.sidebar-projects-header {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #888;
+    margin-bottom: 18px;
+}
+
+.project-tree {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.tree-empty {
+    font-size: 12px;
+    color: #999;
+    padding: 10px 0;
+}
+
+/* Przygotowanie stylu rozwijanych projektów */
+
+.tree-project {
+    width: 100%;
+    padding: 10px 8px;
+    border: none;
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+    font-size: 13px;
+    border-radius: 7px;
+    color: #333;
+}
+
+.tree-project:hover {
+    background: #f1f0ed;
+}
+
+.tree-chapters {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.tree-chapter {
+    border: none;
+    background: transparent;
+    padding: 7px 8px;
+    text-align: left;
+    font-size: 12px;
+    color: #777;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.tree-chapter:hover {
+    background: #f1f0ed;
+    color: #222;
+}
+
+
+/* PULPIT - DZISIEJSZA AKTYWNOSC */
+
+.daily-dashboard {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin: 24px 0;
+}
+
+.daily-card {
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 24px;
+    min-width: 0;
+}
+
+.daily-card h2 {
+    font-size: 20px;
+    margin: 12px 0 18px;
+}
+
+.daily-number {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 4px;
+}
+
+.daily-description {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.daily-meta {
+    font-size: 13px;
+    color: #555;
+    margin: 10px 0;
+}
+
+.daily-meta strong {
+    color: #222;
+}
+
+.main-project-card label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.main-project-card select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fafafa;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .daily-dashboard {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* PRZYCISK KONTYNUUJ PRACE */
+
+.continue-writing-btn {
+    display: block;
+    width: 100%;
+    margin: 18px 0;
+    padding: 13px 18px;
+    text-align: center;
+}
+
+.continue-writing-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+
+/* GATUNKI LITERACKIE NA KARTACH */
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.project-tags .project-type,
+.project-genre {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.project-tags .project-type {
+    background: #f0eee9;
+    color: #666057;
+}
+
+.project-genre {
+    background: #e7f0ec;
+    color: #476b60;
+}
+
+
+/* GALERIA OKLADEK */
+
+.cover-picker {
+    margin: 20px 0 24px;
+}
+
+.cover-hint {
+    font-size: 13px;
+    color: #777;
+    margin: 8px 0 16px;
+}
+
+.cover-gallery {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 12px;
+}
+
+.cover-option {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 5px;
+    background: #fff;
+    border: 2px solid #e5e1da;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.cover-option img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.cover-option:hover {
+    transform: translateY(-4px);
+    border-color: #aaa49a;
+}
+
+.cover-option.selected {
+    border-color: #476b60;
+    background: #edf4f0;
+    box-shadow: 0 0 0 2px rgba(71, 107, 96, 0.15);
+}
+
+.cover-option.selected::after {
+    content: "✓";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 25px;
+    height: 25px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #476b60;
+    color: white;
+    font-weight: bold;
+}
+
+.cover-option:focus-visible {
+    outline: 3px solid #476b60;
+    outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+    .cover-gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .cover-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* KARTY UTWOROW Z OKLADKAMI */
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.project-cover {
+    width: 100%;
+    max-height: 280px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #f0eee9;
+}
+
+.project-cover img {
+    display: block;
+    width: 100%;
+    height: 280px;
+    object-fit: contain;
+}
+
+.project-cover-placeholder {
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #e8e4dd, #c8d3cb);
+    color: #476b60;
+}
+
+.project-cover-placeholder span {
+    font-size: 48px;
+}
+
+.project-cover-placeholder p {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.project-card h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+}
+
+
+/* BIBLIOTEKA 2.0 — DOPRACOWANIE KART */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.project-card {
+    min-width: 0;
+    padding: 22px;
+    gap: 14px;
+}
+
+.project-cover {
+    width: 100%;
+    height: 320px;
+    max-height: none;
+    background: #f0eee9;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.project-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.project-cover-placeholder {
+    width: 100%;
+    height: 100%;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 0;
+}
+
+.project-card h3 {
+    display: block;
+    width: 100%;
+    font-size: 21px;
+    line-height: 1.3;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.project-card > p {
+    margin: 0;
+}
+
+.project-card .progress-bar {
+    margin-top: 6px;
+}
+
+.project-actions {
+    margin-top: auto;
+    padding-top: 10px;
+}
+
+/* TABLETY */
+@media (max-width: 1100px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* TELEFONY */
+@media (max-width: 650px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-cover {
+        height: 300px;
+    }
+}
+
+
+/* OKNO EDYCJI UTWORU */
+
+.edit-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: rgba(20, 25, 22, 0.6);
+}
+
+.edit-modal.hidden {
+    display: none;
+}
+
+.edit-modal-content {
+    width: 100%;
+    max-width: 650px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+}
+
+.edit-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.edit-modal-header h2 {
+    margin: 0;
+    font-size: 25px;
+}
+
+#closeEditModal {
+    border: none;
+    background: #f0eee9;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#editProjectForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#editProjectForm > label {
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+#editProjectForm > input,
+#editProjectForm > select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 9px;
+    font: inherit;
+}
+
+.edit-cover-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 12px 0;
+}
+
+.edit-cover-options label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+#editCoverUpload {
+    padding: 16px;
+    border: 1px dashed #ccc;
+    border-radius: 10px;
+    background: #faf9f7;
+}
+
+#editCoverUpload input {
+    display: block;
+    margin-top: 12px;
+    max-width: 100%;
+}
+
+.edit-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    .edit-modal-content {
+        padding: 20px;
+    }
+
+    .edit-modal-actions {
+        flex-direction: column;
+    }
+}
+
+
+/* PODGLAD WLASNEJ OKLADKI */
+
+.edit-cover-preview {
+    display: block;
+    width: 160px;
+    max-height: 230px;
+    object-fit: cover;
+    margin-top: 16px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.edit-cover-preview.hidden {
+    display: none;
+}
+
+.cover-upload-error {
+    color: #b42318;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+
+/* LOGO BIURKA PISARZA */
+
+.sidebar-logo {
+    margin: 0 0 28px;
+}
+
+.sidebar-logo img {
+    display: block;
+    width: 100%;
+    max-width: 190px;
+    height: auto;
+    object-fit: contain;
+}
+

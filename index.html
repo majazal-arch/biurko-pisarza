@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biurko Pisarza</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <div class="app">
+
+        <aside class="sidebar">
+
+            <h2 class="sidebar-logo">
+                <img src="images/logo.webp" alt="Biurko Pisarza">
+            </h2>
+
+            <nav>
+                <button class="nav-btn active" data-view="dashboard">
+                    Pulpit
+                </button>
+
+                <button class="nav-btn" data-view="projects">
+                    Moje utwory
+                </button>
+
+                <button class="nav-btn" data-view="editing">
+                    Redakcja
+                </button>
+            </nav>
+
+            <!-- DRZEWKO PROJEKTÓW -->
+            <div class="sidebar-projects">
+                <div class="sidebar-projects-header">
+                    <span>TWOJE PROJEKTY</span>
+                </div>
+
+                <div id="projectTree" class="project-tree">
+                    <p class="tree-empty">Brak projektów</p>
+                </div>
+            </div>
+
+            <p class="sidebar-footer">Twoja przestrzeń literacka.</p>
+        </aside>
+
+        <main class="content">
+
+            <section id="dashboard" class="view active">
+
+
+                <div class="welcome-banner">
+                    <div class="welcome-text">
+                        <p class="eyebrow">TWOJA PRZESTRZEŃ TWÓRCZA</p>
+                        <h2>Każda historia zaczyna się od słowa.</h2>
+                        <p>Twórz, zapisuj postępy i rozwijaj swoje historie.</p>
+                    </div>
+
+                    <img src="images/biurko-pisarza-banner.png" alt="Ilustracja pisarskiego biurka"
+                        class="welcome-image">
+                </div>
+
+
+
+                <p class="eyebrow">PRZEGLĄD</p>
+                <h1>Twoje biurko</h1>
+                <p class="subtitle">
+                    Wszystkie historie zaczynają się od jednego słowa.
+                </p>
+
+                <div class="stats">
+                    <div class="stat-card">
+                        <p>Łącznie słów</p>
+                        <h2>0</h2>
+                    </div>
+
+                    <div class="stat-card">
+                        <p>Aktywne utwory</p>
+                        <h2>0</h2>
+                    </div>
+
+                    <div class="stat-card">
+                        <p>Ukończone rozdziały</p>
+                        <h2>0</h2>
+                    </div>
+                </div>
+
+                <!-- DZISIEJSZA AKTYWNOSC I GLOWNY PROJEKT -->
+                <div class="daily-dashboard">
+
+                    <div class="daily-card">
+                        <p class="eyebrow">DZISIEJSZA AKTYWNOSC</p>
+                        <h2>Dzisiaj napisane</h2>
+
+                        <div class="daily-number" id="todayWords">0</div>
+                        <p class="daily-description">słów</p>
+
+                        <p class="daily-meta">
+                            Sesje pisarskie:
+                            <strong id="todaySessions">0</strong>
+                        </p>
+
+                        <p class="daily-meta">
+                            Sesje redakcyjne:
+                            <strong id="todayEditingSessions">0</strong>
+                        </p>
+                    </div>
+
+                    <div class="daily-card main-project-card">
+                        <p class="eyebrow">TWOJ PRIORYTET</p>
+                        <h2>Główny projekt</h2>
+
+                        <div id="mainProjectInfo">
+                            <p class="daily-description">
+                                Nie wybrano jeszcze głównego projektu.
+                            </p>
+                        </div>
+
+                        <button id="continueWritingBtn" class="primary-btn continue-writing-btn" type="button" disabled>
+                            Kontynuuj pracę →
+                        </button>
+
+
+                        <label for="mainProjectSelect">
+                            Wybierz główny projekt
+                        </label>
+
+                        <select id="mainProjectSelect">
+                            <option value="">-- Wybierz utwór --</option>
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+                    <h2>Ostatnie projekty</h2>
+                    <p class="empty-state">
+                        Nie masz jeszcze żadnych projektów.
+                        Dodaj swój pierwszy utwór!
+                    </p>
+                </div>
+            </section>
+
+            <section id="projects" class="view">
+                <p class="eyebrow">BIBLIOTEKA</p>
+                <h1>Moje utwory</h1>
+                <p class="subtitle">
+                    Wszystkie Twoje historie w jednym miejscu.
+                </p>
+
+
+                <!-- OSTATNIO EDYTOWANE UTWORY -->
+                <div class="recent-section">
+                    <div class="section-heading">
+                        <div>
+                            <p class="eyebrow">WRÓĆ DO PISANIA</p>
+                            <h2>Ostatnio edytowane</h2>
+                        </div>
+                    </div>
+
+                    <div id="recentProjects" class="recent-grid">
+                        <p class="empty-state">
+                            Tutaj pojawią się ostatnio edytowane utwory.
+                        </p>
+                    </div>
+                </div>
+
+                <button id="showFormBtn" class="primary-btn">
+                    + Nowy utwór
+                </button>
+
+                <form id="projectForm" class="panel hidden">
+                    <h2>Dodaj nowy utwór</h2>
+
+                    <label for="projectTitle">Tytuł utworu</label>
+                    <input type="text" id="projectTitle" placeholder="Np. Moja pierwsza powieść" maxlength="100"
+                        required>
+
+                    <label for="projectType">Rodzaj utworu</label>
+                    <select id="projectType">
+                        <option value="Powieść">Powieść</option>
+                        <option value="Opowiadanie">Opowiadanie</option>
+                        <option value="Inne">Inne</option>
+                    </select>
+
+                    <!-- GATUNEK LITERACKI -->
+                    <label for="projectGenre">Gatunek literacki</label>
+
+                    <select id="projectGenre">
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="Romans">Romans</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Science fiction">Science fiction</option>
+                        <option value="Kryminał">Kryminał</option>
+                        <option value="Dramat">Dramat</option>
+                        <option value="Obyczajowy">Obyczajowy</option>
+                        <option value="Inne" selected>Inne</option>
+                    </select>
+
+                    <!-- WYBOR OKLADKI -->
+                    <div class="cover-picker">
+                        <label>Wybierz okładkę utworu</label>
+
+                        <div class="edit-cover-options">
+                            <label>
+                                <input type="radio" name="newCoverMode" value="ai" checked>
+                                Galeria AI
+                            </label>
+
+                            <label>
+                                <input type="radio" name="newCoverMode" value="own">
+                                Własna okładka
+                            </label>
+
+                            <label>
+                                <input type="radio" name="newCoverMode" value="none">
+                                Bez okładki
+                            </label>
+                        </div>
+
+
+                        <p class="cover-hint">
+                            Wybierz gatunek literacki, aby zobaczyć dostępne okładki.
+                        </p>
+
+                        <div id="coverGallery" class="cover-gallery"></div>
+
+
+                        <div id="newCoverUpload" class="hidden">
+                            <label for="newCoverFile">
+                                Wybierz okładkę z komputera
+                            </label>
+
+                            <input type="file" id="newCoverFile" accept="image/png,image/jpeg,image/webp">
+
+                            <img id="newCoverPreview" class="edit-cover-preview hidden" alt="Podgląd nowej okładki">
+
+                            <p id="newCoverError" class="cover-upload-error" role="alert"></p>
+                        </div>
+
+
+                        <input type="hidden" id="projectCover" value="">
+                    </div>
+
+
+                    <label for="projectGoal">Docelowa liczba słów</label>
+                    <input type="number" id="projectGoal" placeholder="Np. 50000" min="1" step="1" required>
+
+                    <label for="projectWords">Aktualna liczba słów</label>
+                    <input type="number" id="projectWords" value="0" min="0" step="1" required>
+
+                    <button type="submit" class="primary-btn">
+                        Zapisz utwór
+                    </button>
+                </form>
+
+                <div id="projectsList" class="projects-grid"></div>
+            </section>
+
+
+            <!-- OKNO EDYCJI UTWORU -->
+            <div id="editProjectModal" class="edit-modal hidden">
+                <div class="edit-modal-content">
+
+                    <div class="edit-modal-header">
+                        <h2>Edytuj utwór</h2>
+                        <button type="button" id="closeEditModal">
+                            ✕
+                        </button>
+                    </div>
+
+                    <form id="editProjectForm">
+
+                        <label for="editProjectTitle">Tytuł utworu</label>
+                        <input type="text" id="editProjectTitle" maxlength="100" required>
+
+                        <label for="editProjectGenre">Gatunek literacki</label>
+                        <select id="editProjectGenre">
+                            <option value="Fantasy">Fantasy</option>
+                            <option value="Thriller">Thriller</option>
+                            <option value="Romans">Romans</option>
+                            <option value="Horror">Horror</option>
+                            <option value="Science fiction">Science fiction</option>
+                            <option value="Kryminał">Kryminał</option>
+                            <option value="Dramat">Dramat</option>
+                            <option value="Obyczajowy">Obyczajowy</option>
+                            <option value="Inne">Inne</option>
+                        </select>
+
+                        <label>Okładka utworu</label>
+
+                        <div class="edit-cover-options">
+                            <label>
+                                <input type="radio" name="editCoverMode" value="ai" checked>
+                                Galeria AI
+                            </label>
+
+                            <label>
+                                <input type="radio" name="editCoverMode" value="own">
+                                Własna okładka
+                            </label>
+
+                            <label>
+                                <input type="radio" name="editCoverMode" value="none">
+                                Bez okładki
+                            </label>
+                        </div>
+
+                        <div id="editCoverGallery" class="cover-gallery"></div>
+
+                        <div id="editCoverUpload" class="hidden">
+                            <label for="editCoverFile">
+                                Wybierz zdjęcie z komputera
+                            </label>
+                            <input type="file" id="editCoverFile" accept="image/png,image/jpeg,image/webp">
+
+                            <img id="editCoverPreview" class="edit-cover-preview hidden" alt="Podgląd własnej okładki">
+                            <p id="editCoverError" class="cover-upload-error" role="alert"></p>
+
+                        </div>
+
+                        <div class="edit-modal-actions">
+                            <button type="button" id="cancelEditModal" class="small-btn">
+                                Anuluj
+                            </button>
+
+                            <button type="submit" class="primary-btn">
+                                Zapisz zmiany
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+
+            <section id="editing" class="view">
+                <p class="eyebrow">WARSZTAT</p>
+                <h1>Redakcja</h1>
+                <p class="subtitle">
+                    Dopracuj każdy rozdział swojej historii.
+                </p>
+
+                <div class="panel">
+                    <label for="editingProject">Wybierz utwór</label>
+                    <select id="editingProject">
+                        <option value="">-- Wybierz utwór --</option>
+                    </select>
+                </div>
+
+                <div id="editingWorkspace" class="hidden">
+
+                    <div class="panel">
+                        <h2>Rozdziały</h2>
+
+                        <form id="chapterForm">
+                            <label for="chapterTitle">Nazwa rozdziału</label>
+                            <input id="chapterTitle" type="text" maxlength="100" placeholder="Np. Rozdział 1 — Początek"
+                                required>
+
+                            <button type="submit" class="primary-btn">
+                                + Dodaj rozdział
+                            </button>
+                        </form>
+                    </div>
+
+                    <div id="chaptersList"></div>
+                </div>
+
+                <p id="editingMessage" class="empty-state">
+                    Wybierz utwór, aby rozpocząć redakcję.
+                </p>
+            </section>
